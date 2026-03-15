@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">PDFbox</string>
+    <string name="title_home">Home</string>
+    <string name="title_tools">Tools</string>
+    <string name="title_recent">Recent</string>
+    <string name="title_viewer">Viewer</string>
+    <string name="title_editor">Editor</string>
+
+    <string name="action_search">Search</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_open_pdf">Open PDF</string>
+    <string name="action_pdf_tools">PDF Tools</string>
+    <string name="action_see_all">See all</string>
+    
+    <string name="section_quick_tools">Quick Tools</string>
+    <string name="section_recent_files">Recent Files</string>
+    
+    <string name="tool_merge">Merge PDF</string>
+    <string name="tool_split">Split PDF</string>
+    <string name="tool_compress">Compress</string>
+    <string name="tool_rotate">Rotate Pages</string>
+    <string name="tool_lock">Password Lock</string>
+    <string name="tool_extract">Extract Images</string>
+    
+    <string name="tool_desc_merge">Combine multiple documents</string>
+    <string name="tool_desc_split">Extract specific pages</string>
+    <string name="tool_desc_compress">Reduce file size</string>
+    <string name="tool_desc_rotate">Change page orientation</string>
+    <string name="tool_desc_lock">Secure with a password</string>
+    <string name="tool_desc_extract">Save photos from PDF</string>
+    
+    <string name="empty_recent_title">No recent files</string>
+    <string name="empty_recent_desc">Open a PDF to get started</string>
+    
+    <string name="menu_open">Open</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_delete">Delete from recents</string>
+
+    <!-- Legacy / Compatibility strings for other fragments -->
+    <string name="no_recent_files">No recent files found</string>
+    <string name="professional_tools">Professional Tools</string>
+    <string name="tools_description">Everything you need to manage your PDF documents efficiently.</string>
+    <string name="merge_pdfs">Merge PDFs</string>
+    <string name="split_pdf">Split PDF</string>
+    <string name="encrypt_pdf">Encrypt PDF</string>
+    <string name="compress_pdf">Compress</string>
+</resources>
