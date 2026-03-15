@@ -20,6 +20,10 @@ public interface RecentFileDao {
     @Query("SELECT * FROM recent_files ORDER BY lastOpened DESC")
     LiveData<List<RecentFile>> getAllRecentFiles();
 
+    @Query("SELECT * FROM recent_files WHERE fileName LIKE :query ORDER BY lastOpened DESC")
+    LiveData<List<RecentFile>> searchRecentFiles(String query);
+
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(RecentFile recentFile);
 

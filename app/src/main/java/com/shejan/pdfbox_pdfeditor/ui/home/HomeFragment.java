@@ -129,7 +129,9 @@ public class HomeFragment extends Fragment {
 
     private void setupClickListeners() {
         binding.btnOpenPdf.setOnClickListener(v -> openFilePicker());
+        binding.btnSettings.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.navigation_settings));
         binding.btnPdfTools.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_home_to_tools));
+
         binding.btnRecentSeeAll.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.navigation_recent));
         
         binding.btnSearch.setOnClickListener(v -> {
@@ -141,7 +143,28 @@ public class HomeFragment extends Fragment {
             binding.etSearch.setText("");
             binding.cardSearch.setVisibility(View.GONE);
         });
+
+        binding.etSearch.addTextChangedListener(new android.text.TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String query = s.toString();
+                if (query.isEmpty()) {
+                    observeViewModel(); // Default list
+                } else {
+                    viewModel.searchRecentFiles(query).observe(getViewLifecycleOwner(), recentFiles -> {
+                        recentFilesAdapter.submitList(recentFiles);
+                    });
+                }
+            }
+
+            @Override
+            public void afterTextChanged(android.text.Editable s) {}
+        });
     }
+
 
     private void observeViewModel() {
         viewModel.getRecentFiles().observe(getViewLifecycleOwner(), recentFiles -> {
@@ -225,11 +248,21 @@ public class HomeFragment extends Fragment {
 
 
     private void shareFile(RecentFile file) {
+        Uri uri = Uri.parse(file.getFilePath());
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("application/pdf");
-        intent.putExtra(Intent.EXTRA_STREAM, Uri.parse(file.getFilePath()));
+        
+        if (uri.getScheme().equals("file")) {
+            java.io.File fileObj = new java.io.File(uri.getPath());
+            uri = androidx.core.content.FileProvider.getUriForFile(getContext(), 
+                getContext().getPackageName() + ".fileprovider", fileObj);
+        }
+        
+        intent.putExtra(Intent.EXTRA_STREAM, uri);
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         startActivity(Intent.createChooser(intent, "Share PDF"));
     }
+
 
     @Override
     public void onDestroyView() {

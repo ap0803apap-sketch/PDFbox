@@ -27,7 +27,12 @@ public class HomeViewModel extends AndroidViewModel {
         return recentFiles;
     }
 
+    public LiveData<List<RecentFile>> searchRecentFiles(String query) {
+        return recentFileDao.searchRecentFiles("%" + query + "%");
+    }
+
     public void insertRecentFile(RecentFile recentFile) {
+
         AppDatabase.databaseWriteExecutor.execute(() -> recentFileDao.insert(recentFile));
     }
 
