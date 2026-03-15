@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.shejan.pdfbox_pdfeditor.R
 import com.shejan.pdfbox_pdfeditor.databinding.FragmentToolsBinding
 
 class ToolsFragment : Fragment() {
@@ -16,8 +18,21 @@ class ToolsFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        
+        binding.cardMerge.setOnClickListener {
+            findNavController().navigate(R.id.navigation_merge)
+        }
+        
+        binding.cardSplit.setOnClickListener {
+            findNavController().navigate(R.id.navigation_split)
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 }
+

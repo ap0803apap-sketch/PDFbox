@@ -59,4 +59,17 @@
         android:name="com.shejan.pdfbox_pdfeditor.ui.editor.EditorFragment"
         android:label="@string/title_editor"
         tools:layout="@layout/fragment_editor" />
+
+    <fragment
+        android:id="@+id/navigation_merge"
+        android:name="com.shejan.pdfbox_pdfeditor.ui.merge.MergeFragment"
+        android:label="Merge PDF"
+        tools:layout="@layout/fragment_merge" />
+
+    <fragment
+        android:id="@+id/navigation_split"
+        android:name="com.shejan.pdfbox_pdfeditor.ui.split.SplitFragment"
+        android:label="Split PDF"
+        tools:layout="@layout/fragment_split" />
 </navigation>
+

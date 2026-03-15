@@ -93,10 +93,31 @@ public class HomeFragment extends Fragment {
         tools.add(new Tool("extract", getString(R.string.tool_extract), getString(R.string.tool_desc_extract), R.drawable.ic_image));
 
         toolCardsAdapter = new ToolCardsAdapter(tools, tool -> {
-            Snackbar.make(binding.getRoot(), "Opening " + tool.getName(), Snackbar.LENGTH_SHORT).show();
-            // In a real app, Navigate to ToolsFragment with tool ID
-            // Navigation.findNavController(binding.getRoot()).navigate(R.id.action_home_to_tools);
+            switch (tool.getId()) {
+                case "merge":
+                    Navigation.findNavController(binding.getRoot()).navigate(R.id.navigation_merge);
+                    break;
+                case "split":
+                    Navigation.findNavController(binding.getRoot()).navigate(R.id.navigation_split);
+                    break;
+                case "compress":
+                    Snackbar.make(binding.getRoot(), "Compress tool coming soon", Snackbar.LENGTH_SHORT).show();
+                    break;
+                case "rotate":
+                    Snackbar.make(binding.getRoot(), "Rotate tool coming soon", Snackbar.LENGTH_SHORT).show();
+                    break;
+                case "lock":
+                    Snackbar.make(binding.getRoot(), "Lock tool coming soon", Snackbar.LENGTH_SHORT).show();
+                    break;
+                case "extract":
+                    Snackbar.make(binding.getRoot(), "Extract tool coming soon", Snackbar.LENGTH_SHORT).show();
+                    break;
+                default:
+                    Snackbar.make(binding.getRoot(), "Opening " + tool.getName(), Snackbar.LENGTH_SHORT).show();
+                    break;
+            }
         });
+
         binding.rvQuickTools.setLayoutManager(new GridLayoutManager(getContext(), 2));
         binding.rvQuickTools.setAdapter(toolCardsAdapter);
     }
