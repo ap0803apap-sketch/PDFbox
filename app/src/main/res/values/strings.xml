@@ -44,4 +44,10 @@
     <string name="split_pdf">Split PDF</string>
     <string name="encrypt_pdf">Encrypt PDF</string>
     <string name="compress_pdf">Compress</string>
+    <string name="pdf_to_image">PDF to Image</string>
+    <string name="text_extraction">Text Extraction</string>
+    <string name="tool_pdf_to_image">PDF to Image</string>
+    <string name="tool_desc_pdf_to_image">Convert pages to images</string>
+    <string name="tool_text_extraction">Text Extraction</string>
+    <string name="tool_desc_text_extraction">Extract selectable text</string>
 </resources>

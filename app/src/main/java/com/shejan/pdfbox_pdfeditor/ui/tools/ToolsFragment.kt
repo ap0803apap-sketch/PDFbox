@@ -28,6 +28,24 @@ class ToolsFragment : Fragment() {
         binding.cardSplit.setOnClickListener {
             findNavController().navigate(R.id.navigation_split)
         }
+
+        binding.cardLock.setOnClickListener {
+            findNavController().navigate(R.id.navigation_lock_unlock)
+        }
+
+        binding.cardCompress.setOnClickListener {
+            findNavController().navigate(R.id.navigation_compress)
+        }
+
+        binding.cardPdfToImage.setOnClickListener {
+            findNavController().navigate(R.id.navigation_pdf_to_image)
+        }
+
+        binding.cardTextExtraction.setOnClickListener {
+            findNavController().navigate(R.id.navigation_text_extraction)
+        }
+
+
     }
 
     override fun onDestroyView() {

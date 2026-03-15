@@ -101,17 +101,22 @@ public class HomeFragment extends Fragment {
                     Navigation.findNavController(binding.getRoot()).navigate(R.id.navigation_split);
                     break;
                 case "compress":
-                    Snackbar.make(binding.getRoot(), "Compress tool coming soon", Snackbar.LENGTH_SHORT).show();
+                    Navigation.findNavController(binding.getRoot()).navigate(R.id.navigation_compress);
                     break;
                 case "rotate":
-                    Snackbar.make(binding.getRoot(), "Rotate tool coming soon", Snackbar.LENGTH_SHORT).show();
+                    Navigation.findNavController(binding.getRoot()).navigate(R.id.navigation_rotate);
                     break;
                 case "lock":
-                    Snackbar.make(binding.getRoot(), "Lock tool coming soon", Snackbar.LENGTH_SHORT).show();
+                    Navigation.findNavController(binding.getRoot()).navigate(R.id.navigation_lock_unlock);
+                    break;
+                case "image":
+                    Navigation.findNavController(binding.getRoot()).navigate(R.id.navigation_pdf_to_image);
                     break;
                 case "extract":
-                    Snackbar.make(binding.getRoot(), "Extract tool coming soon", Snackbar.LENGTH_SHORT).show();
+                    Navigation.findNavController(binding.getRoot()).navigate(R.id.navigation_text_extraction);
                     break;
+
+
                 default:
                     Snackbar.make(binding.getRoot(), "Opening " + tool.getName(), Snackbar.LENGTH_SHORT).show();
                     break;

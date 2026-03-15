@@ -71,5 +71,37 @@
         android:name="com.shejan.pdfbox_pdfeditor.ui.split.SplitFragment"
         android:label="Split PDF"
         tools:layout="@layout/fragment_split" />
+
+    <fragment
+        android:id="@+id/navigation_rotate"
+        android:name="com.shejan.pdfbox_pdfeditor.ui.rotate.RotateFragment"
+        android:label="Rotate PDF"
+        tools:layout="@layout/fragment_rotate" />
+
+    <fragment
+        android:id="@+id/navigation_compress"
+        android:name="com.shejan.pdfbox_pdfeditor.ui.compress.CompressFragment"
+        android:label="Compress PDF"
+        tools:layout="@layout/fragment_compress" />
+
+    <fragment
+        android:id="@+id/navigation_lock_unlock"
+        android:name="com.shejan.pdfbox_pdfeditor.ui.security.LockUnlockFragment"
+        android:label="Lock/Unlock PDF"
+        tools:layout="@layout/fragment_lock_unlock" />
+
+    <fragment
+        android:id="@+id/navigation_pdf_to_image"
+        android:name="com.shejan.pdfbox_pdfeditor.ui.conversion.PdfToImageFragment"
+        android:label="PDF to Image"
+        tools:layout="@layout/fragment_pdf_to_image" />
+
+    <fragment
+        android:id="@+id/navigation_text_extraction"
+        android:name="com.shejan.pdfbox_pdfeditor.ui.extraction.TextExtractionFragment"
+        android:label="Text Extraction"
+        tools:layout="@layout/fragment_text_extraction" />
 </navigation>
+
+
 
