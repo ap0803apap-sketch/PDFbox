@@ -51,15 +51,6 @@
                         android:clickable="true"
                         android:focusable="true"/>
 
-                    <ImageView
-                        android:id="@+id/btnSettings"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_settings"
-                        app:tint="@color/on_surface"
-                        android:contentDescription="@string/action_settings"
-                        android:clickable="true"
-                        android:focusable="true"/>
 
                 </LinearLayout>
 

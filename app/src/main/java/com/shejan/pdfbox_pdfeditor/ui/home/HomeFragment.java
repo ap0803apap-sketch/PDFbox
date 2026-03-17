@@ -129,7 +129,6 @@ public class HomeFragment extends Fragment {
 
     private void setupClickListeners() {
         binding.btnOpenPdf.setOnClickListener(v -> openFilePicker());
-        binding.btnSettings.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.navigation_settings));
         binding.btnPdfTools.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_home_to_tools));
 
         binding.btnRecentSeeAll.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.navigation_recent));
