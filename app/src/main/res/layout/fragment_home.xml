@@ -47,8 +47,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginEnd="16dp"
-                        android:src="@drawable/ic_search"
-                        app:tint="@color/on_surface"
+                        android:src="@drawable/ic_search_home"
                         android:contentDescription="@string/action_search"
                         android:clickable="true"
                         android:focusable="true"/>
@@ -84,8 +83,7 @@
                         <ImageView
                             android:layout_width="20dp"
                             android:layout_height="20dp"
-                            android:src="@drawable/ic_search"
-                            app:tint="@color/text_hint" />
+                            android:src="@drawable/ic_search_home" />
 
                         <EditText
                             android:id="@+id/etSearch"
@@ -105,9 +103,9 @@
                             android:id="@+id/btnSearchClose"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
-                            android:src="@drawable/ic_search"
-                            android:rotation="45"
+                            android:src="@drawable/ic_close"
                             app:tint="@color/text_hint"
+                            android:contentDescription="@string/menu_delete"
                             android:clickable="true"
                             android:focusable="true"/>
 
