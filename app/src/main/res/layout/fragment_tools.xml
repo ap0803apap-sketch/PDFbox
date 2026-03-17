@@ -129,7 +129,47 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- PDF to Image -->
+            <!-- Rotate PDF -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardRotate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/surface"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/card_stroke">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="@color/icon_container_bg">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_rotate"
+                            app:tint="@color/on_surface" />
+                    </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/tool_rotate"
+                        android:textColor="@color/on_surface"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardPdfToImage"
                 android:layout_width="0dp"
@@ -157,8 +197,7 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_pdf_to_image"
-                            app:tint="@color/on_surface" />
+                            android:src="@drawable/ic_pdf_to_image" />
                     </com.google.android.material.card.MaterialCardView>
                     <TextView
                         android:layout_width="wrap_content"
@@ -199,8 +238,7 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_text_extraction"
-                            app:tint="@color/on_surface" />
+                            android:src="@drawable/ic_text_extraction" />
                     </com.google.android.material.card.MaterialCardView>
                     <TextView
                         android:layout_width="wrap_content"

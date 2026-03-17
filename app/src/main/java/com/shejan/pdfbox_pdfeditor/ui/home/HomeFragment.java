@@ -86,12 +86,10 @@ public class HomeFragment extends Fragment {
 
     private void setupQuickToolsGrid() {
         List<Tool> tools = new ArrayList<>();
-        tools.add(new Tool("merge", getString(R.string.tool_merge), getString(R.string.tool_desc_merge), R.drawable.ic_merge));
-        tools.add(new Tool("split", getString(R.string.tool_split), getString(R.string.tool_desc_split), R.drawable.ic_split));
         tools.add(new Tool("compress", getString(R.string.tool_compress), getString(R.string.tool_desc_compress), R.drawable.ic_compress));
-        tools.add(new Tool("rotate", getString(R.string.tool_rotate), getString(R.string.tool_desc_rotate), R.drawable.ic_rotate));
-        tools.add(new Tool("lock", getString(R.string.tool_lock), getString(R.string.tool_desc_lock), R.drawable.ic_lock));
-        tools.add(new Tool("extract", getString(R.string.tool_extract), getString(R.string.tool_desc_extract), R.drawable.ic_image));
+        tools.add(new Tool("merge", getString(R.string.tool_merge), getString(R.string.tool_desc_merge), R.drawable.ic_merge));
+        tools.add(new Tool("text_extraction", getString(R.string.tool_text_extraction), getString(R.string.tool_desc_text_extraction), R.drawable.ic_text_extraction));
+        tools.add(new Tool("pdf_to_image", getString(R.string.tool_pdf_to_image), getString(R.string.tool_desc_pdf_to_image), R.drawable.ic_pdf_to_image));
 
         toolCardsAdapter = new ToolCardsAdapter(tools, tool -> {
             switch (tool.getId()) {
@@ -110,10 +108,10 @@ public class HomeFragment extends Fragment {
                 case "lock":
                     Navigation.findNavController(binding.getRoot()).navigate(R.id.navigation_lock_unlock);
                     break;
-                case "image":
+                case "pdf_to_image":
                     Navigation.findNavController(binding.getRoot()).navigate(R.id.navigation_pdf_to_image);
                     break;
-                case "extract":
+                case "text_extraction":
                     Navigation.findNavController(binding.getRoot()).navigate(R.id.navigation_text_extraction);
                     break;
 
@@ -132,6 +130,13 @@ public class HomeFragment extends Fragment {
         binding.btnOpenPdf.setOnClickListener(v -> openFilePicker());
         
         binding.btnPdfTools.setOnClickListener(v -> {
+            BottomNavigationView bottomNav = getActivity().findViewById(R.id.bottom_nav);
+            if (bottomNav != null) {
+                bottomNav.setSelectedItemId(R.id.navigation_tools);
+            }
+        });
+
+        binding.btnToolsSeeAll.setOnClickListener(v -> {
             BottomNavigationView bottomNav = getActivity().findViewById(R.id.bottom_nav);
             if (bottomNav != null) {
                 bottomNav.setSelectedItemId(R.id.navigation_tools);

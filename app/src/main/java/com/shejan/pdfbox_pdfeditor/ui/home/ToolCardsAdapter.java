@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shejan.pdfbox_pdfeditor.R;
 import com.shejan.pdfbox_pdfeditor.databinding.ItemToolCardBinding;
 import com.shejan.pdfbox_pdfeditor.model.Tool;
 
@@ -55,6 +56,16 @@ public class ToolCardsAdapter extends RecyclerView.Adapter<ToolCardsAdapter.Tool
             binding.txtToolName.setText(tool.getName());
             binding.txtToolDesc.setText(tool.getDescription());
             binding.imgToolIcon.setImageResource(tool.getIconResId());
+            
+            // Disable tint for colorful extraction icons
+            if ("pdf_to_image".equals(tool.getId()) || "text_extraction".equals(tool.getId())) {
+                binding.imgToolIcon.setImageTintList(null);
+            } else {
+                binding.imgToolIcon.setImageTintList(android.content.res.ColorStateList.valueOf(
+                    androidx.core.content.ContextCompat.getColor(binding.getRoot().getContext(), R.color.on_surface)
+                ));
+            }
+
             binding.getRoot().setOnClickListener(v -> listener.onToolClick(tool));
         }
     }

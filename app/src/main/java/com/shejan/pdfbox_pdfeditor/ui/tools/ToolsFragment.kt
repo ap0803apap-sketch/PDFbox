@@ -29,6 +29,10 @@ class ToolsFragment : Fragment() {
             findNavController().navigate(R.id.navigation_split)
         }
 
+        binding.cardRotate.setOnClickListener {
+            findNavController().navigate(R.id.navigation_rotate)
+        }
+
         binding.cardLock.setOnClickListener {
             findNavController().navigate(R.id.navigation_lock_unlock)
         }
