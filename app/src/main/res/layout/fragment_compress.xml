@@ -30,7 +30,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/btnCompressContainer"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/divider">
 
         <LinearLayout
@@ -152,29 +152,131 @@
                     android:text="High" />
             </com.google.android.material.button.MaterialButtonToggleGroup>
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCompress"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:backgroundTint="@color/black"
+                android:enabled="false"
+                android:text="Compress Now"
+                android:textColor="@color/white"
+                app:cornerRadius="12dp" />
+
+            <LinearLayout
+                android:id="@+id/resultContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider"
+                    android:layout_marginBottom="24dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Compression Result"
+                    android:textColor="@color/on_surface"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardBackgroundColor="@color/surface"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/card_stroke"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Original Size"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="14sp" />
+                            <TextView
+                                android:id="@+id/tvOriginalSize"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:text="0 KB"
+                                android:textColor="@color/text_primary"
+                                android:fontFamily="sans-serif-medium"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Compressed Size"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="14sp" />
+                            <TextView
+                                android:id="@+id/tvCompressedSize"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:text="0 KB"
+                                android:textColor="@color/success"
+                                android:fontFamily="sans-serif-medium"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/divider"
+                            android:layout_marginVertical="12dp"/>
+
+                        <TextView
+                            android:id="@+id/tvSavings"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="You saved 0 KB (0%)"
+                            android:textColor="@color/text_primary"
+                            android:gravity="center"
+                            android:fontFamily="sans-serif-medium"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDownload"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Download PDF"
+                    app:icon="@drawable/ic_download"
+                    android:textColor="@color/on_surface"
+                    app:cornerRadius="12dp" />
+
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 
-    <FrameLayout
-        android:id="@+id/btnCompressContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="120dp"
-        android:background="@color/surface"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCompress"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:backgroundTint="@color/black"
-            android:enabled="false"
-            android:text="Compress Now"
-            android:textColor="@color/white"
-            app:cornerRadius="12dp" />
-    </FrameLayout>
-    
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"

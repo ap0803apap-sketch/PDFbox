@@ -35,6 +35,15 @@ class CompressFragment : Fragment() {
         }
     }
 
+    private var compressedFile: File? = null
+    private var originalSize: Long = 0
+
+    private val saveFileLauncher = registerForActivityResult(ActivityResultContracts.CreateDocument("application/pdf")) { uri ->
+        uri?.let { destUri ->
+            saveFileToUri(destUri)
+        }
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentCompressBinding.inflate(inflater, container, false)
         return binding.root
@@ -46,10 +55,10 @@ class CompressFragment : Fragment() {
     }
 
     private fun setupClickListeners() {
-
         binding.btnSelectFile.setOnClickListener { openFilePicker() }
         binding.btnRemoveFile.setOnClickListener { removeFile() }
         binding.btnCompress.setOnClickListener { startCompress() }
+        binding.btnDownload.setOnClickListener { downloadFile() }
     }
 
     private fun openFilePicker() {
@@ -63,11 +72,13 @@ class CompressFragment : Fragment() {
     private fun handleFilePicked(uri: Uri) {
         selectedUri = uri
         binding.txtFileName.text = getFileName(uri)
-        binding.txtFileSize.text = getFileSize(uri)
+        originalSize = getFileSizeBytes(uri)
+        binding.txtFileSize.text = formatFileSize(originalSize)
 
         binding.cardSelectedFile.visibility = View.VISIBLE
         binding.btnSelectFile.visibility = View.GONE
         binding.btnCompress.isEnabled = true
+        binding.resultContainer.visibility = View.GONE
     }
 
     private fun removeFile() {
@@ -75,6 +86,8 @@ class CompressFragment : Fragment() {
         binding.cardSelectedFile.visibility = View.GONE
         binding.btnSelectFile.visibility = View.VISIBLE
         binding.btnCompress.isEnabled = false
+        binding.resultContainer.visibility = View.GONE
+        compressedFile = null
     }
 
     private fun startCompress() {
@@ -100,9 +113,9 @@ class CompressFragment : Fragment() {
                 
                 PdfProcessor.compressPdf(inputStream, outputStream, quality)
                 
-                val resultSize = formatFileSize(outputFile.length())
-                Toast.makeText(context, "PDF Compressed Successfully! New size: $resultSize", Toast.LENGTH_LONG).show()
-                findNavController().navigateUp()
+                compressedFile = outputFile
+                showResult(outputFile)
+                
             } catch (e: Exception) {
                 e.printStackTrace()
                 Toast.makeText(context, "Compression Failed: ${e.message}", Toast.LENGTH_LONG).show()
@@ -111,6 +124,52 @@ class CompressFragment : Fragment() {
                 binding.btnCompress.isEnabled = true
             }
         }
+    }
+
+    private fun showResult(file: File) {
+        val compressedSize = file.length()
+        binding.tvOriginalSize.text = formatFileSize(originalSize)
+        binding.tvCompressedSize.text = formatFileSize(compressedSize)
+        
+        val savings = originalSize - compressedSize
+        val savingsPercent = if (originalSize > 0) (savings * 100 / originalSize) else 0
+        binding.tvSavings.text = "You saved ${formatFileSize(savings)} (${savingsPercent}%)"
+        
+        binding.resultContainer.visibility = View.VISIBLE
+        Toast.makeText(context, "PDF Compressed Successfully!", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun downloadFile() {
+        val fileName = "compressed_${binding.txtFileName.text}"
+        saveFileLauncher.launch(fileName)
+    }
+
+    private fun saveFileToUri(destUri: Uri) {
+        lifecycleScope.launch {
+            try {
+                val sourceFile = compressedFile ?: return@launch
+                context?.contentResolver?.openOutputStream(destUri)?.use { output ->
+                    sourceFile.inputStream().use { input ->
+                        input.copyTo(output)
+                    }
+                }
+                Toast.makeText(context, "File saved successfully!", Toast.LENGTH_LONG).show()
+            } catch (e: Exception) {
+                Toast.makeText(context, "Failed to save file", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun getFileSizeBytes(uri: Uri): Long {
+        var size: Long = 0
+        val cursor: Cursor? = context?.contentResolver?.query(uri, null, null, null, null)
+        cursor?.use {
+            if (it.moveToFirst()) {
+                val sizeIndex = it.getColumnIndex(OpenableColumns.SIZE)
+                if (sizeIndex != -1) size = it.getLong(sizeIndex)
+            }
+        }
+        return size
     }
 
     private fun getFileName(uri: Uri): String {
@@ -123,18 +182,6 @@ class CompressFragment : Fragment() {
             }
         }
         return name
-    }
-
-    private fun getFileSize(uri: Uri): String {
-        var size: Long = 0
-        val cursor: Cursor? = context?.contentResolver?.query(uri, null, null, null, null)
-        cursor?.use {
-            if (it.moveToFirst()) {
-                val sizeIndex = it.getColumnIndex(OpenableColumns.SIZE)
-                if (sizeIndex != -1) size = it.getLong(sizeIndex)
-            }
-        }
-        return formatFileSize(size)
     }
 
     private fun formatFileSize(size: Long): String {

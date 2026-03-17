@@ -68,11 +68,23 @@ object PdfProcessor {
     }
 
     suspend fun compressPdf(source: InputStream, dest: OutputStream, quality: Float) = withContext(Dispatchers.IO) {
-        // Simple compression by re-saving. PDFBox doesn't have a high-level "compress" method like some others,
-        // but we can optimize by setting compression on the output stream or reducing image quality if we iterate.
-        // For now, we'll do a standard save which often reduces size if the original wasn't optimized.
         val document = PDDocument.load(source)
         try {
+            for (page in document.pages) {
+                val resources = page.resources
+                resources?.xObjectNames?.forEach { name ->
+                    if (resources.isImageXObject(name)) {
+                        val xobject = resources.getXObject(name)
+                        if (xobject is com.tom_roush.pdfbox.pdmodel.graphics.image.PDImageXObject) {
+                            val bitmap = xobject.image
+                            val baos = java.io.ByteArrayOutputStream()
+                            bitmap.compress(Bitmap.CompressFormat.JPEG, (quality * 100).toInt(), baos)
+                            val compressedXObject = com.tom_roush.pdfbox.pdmodel.graphics.image.JPEGFactory.createFromStream(document, baos.toByteArray().inputStream())
+                            resources.put(name, compressedXObject)
+                        }
+                    }
+                }
+            }
             document.save(dest)
         } finally {
             document.close()
