@@ -47,7 +47,7 @@ class RotateFragment : Fragment() {
     }
 
     private fun setupClickListeners() {
-        binding.btnBack.setOnClickListener { findNavController().navigateUp() }
+
         binding.btnSelectFile.setOnClickListener { openFilePicker() }
         binding.btnRemoveFile.setOnClickListener { removeFile() }
         binding.btnRotate.setOnClickListener { startRotate() }

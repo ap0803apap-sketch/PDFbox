@@ -46,7 +46,7 @@ class CompressFragment : Fragment() {
     }
 
     private fun setupClickListeners() {
-        binding.btnBack.setOnClickListener { findNavController().navigateUp() }
+
         binding.btnSelectFile.setOnClickListener { openFilePicker() }
         binding.btnRemoveFile.setOnClickListener { removeFile() }
         binding.btnCompress.setOnClickListener { startCompress() }

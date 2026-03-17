@@ -79,7 +79,7 @@ class MergeFragment : Fragment() {
     }
 
     private fun setupClickListeners() {
-        binding.btnBack.setOnClickListener { findNavController().navigateUp() }
+
         binding.btnAddFile.setOnClickListener { openFilePicker() }
         binding.btnMerge.setOnClickListener { startMerge() }
     }
