@@ -37,7 +37,13 @@
         android:id="@+id/navigation_recent"
         android:name="com.shejan.pdfbox_pdfeditor.ui.recent.RecentFragment"
         android:label="@string/title_recent"
-        tools:layout="@layout/fragment_recent" />
+        tools:layout="@layout/fragment_recent">
+        <action
+            android:id="@+id/action_recent_to_viewer"
+            app:destination="@id/navigation_viewer"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_viewer"

@@ -21,7 +21,7 @@ public class RecentFilesAdapter extends ListAdapter<RecentFile, RecentFilesAdapt
         void onMoreClick(View view, RecentFile file);
     }
 
-    protected RecentFilesAdapter(OnFileClickListener listener) {
+    public RecentFilesAdapter(OnFileClickListener listener) {
         super(new DiffUtil.ItemCallback<RecentFile>() {
             @Override
             public boolean areItemsTheSame(@NonNull RecentFile oldItem, @NonNull RecentFile newItem) {
