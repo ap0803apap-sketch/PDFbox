@@ -106,12 +106,12 @@ class MergeFragment : Fragment() {
             binding.layoutEmptyState.visibility = View.VISIBLE
             binding.rvMergeFiles.visibility = View.GONE
             binding.btnMerge.isEnabled = false
-            binding.btnMerge.alpha = 0.5f
+            binding.btnMerge.alpha = 1.0f
         } else {
             binding.layoutEmptyState.visibility = View.GONE
             binding.rvMergeFiles.visibility = View.VISIBLE
             binding.btnMerge.isEnabled = selectedFiles.size >= 2
-            binding.btnMerge.alpha = if (selectedFiles.size >= 2) 1.0f else 0.5f
+            binding.btnMerge.alpha = 1.0f
         }
     }
 
