@@ -54,16 +54,6 @@
                     android:text="Add PDF"
                     app:icon="@drawable/ic_add"
                     app:strokeColor="@color/card_stroke" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnMerge"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:layout_marginTop="16dp"
-                    android:backgroundTint="@color/black"
-                    android:text="Merge Now"
-                    android:textColor="@color/white"
-                    app:cornerRadius="12dp" />
             </LinearLayout>
 
             <TextView
@@ -86,6 +76,18 @@
                 android:nestedScrollingEnabled="false"
                 android:padding="16dp"
                 tools:listitem="@layout/item_merge_file" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMerge"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/black"
+                android:text="Merge Now"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                app:cornerRadius="12dp" />
 
             <LinearLayout
                 android:id="@+id/layoutEmptyState"

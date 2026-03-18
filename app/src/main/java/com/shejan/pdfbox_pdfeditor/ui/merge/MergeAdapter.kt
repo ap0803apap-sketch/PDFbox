@@ -31,6 +31,8 @@ class MergeAdapter(
             }
         }
         notifyItemMoved(fromPosition, toPosition)
+        // Refresh numbers for all items affected by the move
+        notifyItemRangeChanged(Math.min(fromPosition, toPosition), files.size)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,13 +41,14 @@ class MergeAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(files[position])
+        holder.bind(files[position], position)
     }
 
     override fun getItemCount(): Int = files.size
 
     inner class ViewHolder(private val binding: ItemMergeFileBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(file: SelectedFile) {
+        fun bind(file: SelectedFile, position: Int) {
+            binding.txtFileNumber.text = (position + 1).toString()
             binding.txtFileName.text = file.name
             binding.txtFileSize.text = file.size
             binding.btnRemove.setOnClickListener { onRemoveClick(file) }

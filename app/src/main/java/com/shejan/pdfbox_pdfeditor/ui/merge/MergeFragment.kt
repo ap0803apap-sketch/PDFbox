@@ -131,14 +131,12 @@ class MergeFragment : Fragment() {
             binding.layoutEmptyState.visibility = View.VISIBLE
             binding.tvSelectedHeader.visibility = View.GONE
             binding.rvMergeFiles.visibility = View.GONE
-            binding.btnMerge.isEnabled = false
-            binding.btnMerge.alpha = 1.0f
+            binding.btnMerge.visibility = View.GONE
         } else {
             binding.layoutEmptyState.visibility = View.GONE
             binding.tvSelectedHeader.visibility = View.VISIBLE
             binding.rvMergeFiles.visibility = View.VISIBLE
-            binding.btnMerge.isEnabled = selectedFiles.size >= 2
-            binding.btnMerge.alpha = 1.0f
+            binding.btnMerge.visibility = if (selectedFiles.size >= 2) View.VISIBLE else View.GONE
         }
     }
 
@@ -155,8 +153,11 @@ class MergeFragment : Fragment() {
                 
                 val outputFile = File(outputFolder, "merged_${System.currentTimeMillis()}.pdf")
                 
+                // Use adapter.getFiles() to maintain the custom sort order
+                val currentFiles = adapter.getFiles()
+                
                 // Open all input streams and ensure they are closed
-                val inputStreams = selectedFiles.mapNotNull { 
+                val inputStreams = currentFiles.mapNotNull { 
                     context?.contentResolver?.openInputStream(it.uri) 
                 }
                 
