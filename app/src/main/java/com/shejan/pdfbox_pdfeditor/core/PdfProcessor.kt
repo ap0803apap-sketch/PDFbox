@@ -21,19 +21,10 @@ object PdfProcessor {
     }
 
     suspend fun mergePdfs(sources: List<InputStream>, dest: OutputStream) = withContext(Dispatchers.IO) {
-        val destDoc = PDDocument()
-        try {
-            sources.forEach { stream ->
-                val sourceDoc = PDDocument.load(stream)
-                sourceDoc.pages.forEach { page ->
-                    destDoc.addPage(page)
-                }
-                sourceDoc.close()
-            }
-            destDoc.save(dest)
-        } finally {
-            destDoc.close()
-        }
+        val merger = com.tom_roush.pdfbox.multipdf.PDFMergerUtility()
+        merger.destinationStream = dest
+        sources.forEach { merger.addSource(it) }
+        merger.mergeDocuments(com.tom_roush.pdfbox.io.MemoryUsageSetting.setupMainMemoryOnly())
     }
 
     suspend fun splitPdf(source: InputStream, pageRanges: List<IntRange>): List<PDDocument> = withContext(Dispatchers.IO) {

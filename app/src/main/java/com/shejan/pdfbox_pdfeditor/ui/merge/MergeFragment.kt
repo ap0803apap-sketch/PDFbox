@@ -31,6 +31,7 @@ class MergeFragment : Fragment() {
     
     private lateinit var adapter: MergeAdapter
     private val selectedFiles = mutableListOf<SelectedFile>()
+    private var mergedFile: File? = null
 
     private val filePickerLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
@@ -41,6 +42,26 @@ class MergeFragment : Fragment() {
                     }
                 } else if (data.data != null) {
                     addFile(data.data!!)
+                }
+            }
+        }
+    }
+
+    private val downloadLauncher = registerForActivityResult(ActivityResultContracts.CreateDocument("application/pdf")) { uri ->
+        uri?.let { saveUri ->
+            mergedFile?.let { file ->
+                lifecycleScope.launch {
+                    try {
+                        context?.contentResolver?.openOutputStream(saveUri)?.use { outputStream ->
+                            file.inputStream().use { inputStream ->
+                                inputStream.copyTo(outputStream)
+                            }
+                        }
+                        Toast.makeText(context, "File saved successfully!", Toast.LENGTH_SHORT).show()
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                        Toast.makeText(context, "Failed to save file: ${e.message}", Toast.LENGTH_LONG).show()
+                    }
                 }
             }
         }
@@ -79,9 +100,12 @@ class MergeFragment : Fragment() {
     }
 
     private fun setupClickListeners() {
-
         binding.btnAddFile.setOnClickListener { openFilePicker() }
         binding.btnMerge.setOnClickListener { startMerge() }
+        binding.btnDownload.setOnClickListener { 
+            val fileName = "merged_${System.currentTimeMillis()}.pdf"
+            downloadLauncher.launch(fileName)
+        }
     }
 
     private fun openFilePicker() {
@@ -102,13 +126,16 @@ class MergeFragment : Fragment() {
     }
 
     private fun updateUI() {
+        binding.resultContainer.visibility = View.GONE
         if (selectedFiles.isEmpty()) {
             binding.layoutEmptyState.visibility = View.VISIBLE
+            binding.tvSelectedHeader.visibility = View.GONE
             binding.rvMergeFiles.visibility = View.GONE
             binding.btnMerge.isEnabled = false
             binding.btnMerge.alpha = 1.0f
         } else {
             binding.layoutEmptyState.visibility = View.GONE
+            binding.tvSelectedHeader.visibility = View.VISIBLE
             binding.rvMergeFiles.visibility = View.VISIBLE
             binding.btnMerge.isEnabled = selectedFiles.size >= 2
             binding.btnMerge.alpha = 1.0f
@@ -123,17 +150,31 @@ class MergeFragment : Fragment() {
             binding.btnMerge.isEnabled = false
             
             try {
-                val inputStreams = selectedFiles.map { context?.contentResolver?.openInputStream(it.uri)!! }
                 val outputFolder = File(context?.getExternalFilesDir(null), "Merged")
                 if (!outputFolder.exists()) outputFolder.mkdirs()
                 
                 val outputFile = File(outputFolder, "merged_${System.currentTimeMillis()}.pdf")
-                val outputStream = FileOutputStream(outputFile)
                 
-                PdfProcessor.mergePdfs(inputStreams, outputStream)
+                // Open all input streams and ensure they are closed
+                val inputStreams = selectedFiles.mapNotNull { 
+                    context?.contentResolver?.openInputStream(it.uri) 
+                }
                 
-                Toast.makeText(context, "PDF Merged Successfully!", Toast.LENGTH_LONG).show()
-                findNavController().navigateUp()
+                try {
+                    FileOutputStream(outputFile).use { fos ->
+                        PdfProcessor.mergePdfs(inputStreams, fos)
+                    }
+                    
+                    mergedFile = outputFile
+                    binding.tvMergedSize.text = formatFileSize(outputFile.length())
+                    binding.resultContainer.visibility = View.VISIBLE
+                    
+                    Toast.makeText(context, "PDF Merged Successfully!", Toast.LENGTH_LONG).show()
+                } finally {
+                    // Close all input streams
+                    inputStreams.forEach { try { it.close() } catch (e: Exception) {} }
+                }
+                
             } catch (e: Exception) {
                 e.printStackTrace()
                 Toast.makeText(context, "Merge Failed: ${e.message}", Toast.LENGTH_LONG).show()
@@ -143,6 +184,7 @@ class MergeFragment : Fragment() {
             }
         }
     }
+
 
     private fun getFileName(uri: Uri): String {
         var name = "Unknown.pdf"
