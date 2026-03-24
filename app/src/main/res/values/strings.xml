@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PDFbox</string>
+    <string name="app_name">PDF box by AP</string>
     <string name="title_home">Home</string>
     <string name="title_tools">Tools</string>
     <string name="title_recent">Recent</string>
@@ -50,4 +50,5 @@
     <string name="tool_desc_pdf_to_image">Convert pages to images</string>
     <string name="tool_text_extraction">Text Extraction</string>
     <string name="tool_desc_text_extraction">Extract selectable text</string>
+    <string name="action_add">action_add\n</string>
 </resources>

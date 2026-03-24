@@ -49,7 +49,7 @@ public class RecentFilesAdapter extends ListAdapter<RecentFile, RecentFilesAdapt
     @Override
     public void onBindViewHolder(@NonNull RecentFileViewHolder holder, int position) {
         RecentFile file = getItem(position);
-        holder.bind(file, position == getItemCount() - 1);
+        holder.bind(file);
     }
 
     class RecentFileViewHolder extends RecyclerView.ViewHolder {
@@ -60,10 +60,9 @@ public class RecentFilesAdapter extends ListAdapter<RecentFile, RecentFilesAdapt
             this.binding = binding;
         }
 
-        public void bind(RecentFile file, boolean isLast) {
+        public void bind(RecentFile file) {
             binding.txtFileName.setText(file.getFileName());
             binding.txtFileInfo.setText(file.getFileSize() + " • " + android.text.format.DateFormat.format("dd MMM yyyy", file.getLastOpened()));
-            binding.divider.setVisibility(isLast ? View.GONE : View.VISIBLE);
             
             binding.getRoot().setOnClickListener(v -> listener.onFileClick(file));
             binding.btnMore.setOnClickListener(v -> listener.onMoreClick(v, file));

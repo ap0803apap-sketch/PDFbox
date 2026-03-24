@@ -1,28 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Branding -->
-    <color name="primary">#FFFFFF</color>
-    <color name="primary_variant">#FFFFFF</color>
-    <color name="secondary">#FFFFFF</color>
-    <color name="accent">#FFFFFF</color>
-    
-    <!-- Base -->
+    <!-- Material 3 Dark Colors (AMOLED Optimized) -->
+    <color name="primary">#A1C9FF</color>
+    <color name="on_primary">#003258</color>
+    <color name="primary_container">#00497E</color>
+    <color name="on_primary_container">#D1E4FF</color>
+
+    <color name="secondary">#BBC7DB</color>
+    <color name="on_secondary">#253140</color>
+    <color name="secondary_container">#3B4858</color>
+    <color name="on_secondary_container">#D7E3F7</color>
+
+    <color name="tertiary">#D6BEE4</color>
+    <color name="on_tertiary">#3B2948</color>
+    <color name="tertiary_container">#523F5F</color>
+    <color name="on_tertiary_container">#F2DAFF</color>
+
+    <!-- Base (AMOLED Dark) -->
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    
-    <!-- Theme Dark -->
-    <color name="background">#0A0A0A</color>
-    <color name="on_background">#FFFFFF</color>
-    <color name="surface">#0A0A0A</color>
-    <color name="on_surface">#FFFFFF</color>
-    <color name="divider">#2A2A2A</color>
-    <color name="card_stroke">#2A2A2A</color>
-    <color name="icon_container_bg">#1E1E1E</color>
-    <color name="item_divider">#222222</color>
-    
+
+    <!-- Theme Dark (AMOLED) -->
+    <color name="background">#000000</color>
+    <color name="on_background">#E2E2E6</color>
+    <color name="surface">#000000</color>
+    <color name="on_surface">#E2E2E6</color>
+    <color name="surface_variant">#43474E</color>
+    <color name="on_surface_variant">#C3C7CF</color>
+    <color name="outline">#8D9199</color>
+
+    <!-- Legacy/Custom mappings for existing code -->
+    <color name="primary_variant">#0061A4</color>
+    <color name="accent">#A1C9FF</color>
+    <color name="divider">#43474E</color>
+    <color name="card_stroke">#43474E</color>
+    <color name="icon_container_bg">#1A1C1E</color>
+    <color name="item_divider">#1A1C1E</color>
+
     <!-- Text Colors -->
-    <color name="text_primary">#FFFFFF</color>
-    <color name="text_secondary">#757575</color>
-    <color name="text_tertiary">#BDBDBD</color>
-    <color name="text_hint">#9E9E9E</color>
+    <color name="text_primary">#E2E2E6</color>
+    <color name="text_secondary">#C3C7CF</color>
+    <color name="text_tertiary">#8D9199</color>
+    <color name="text_hint">#73777F</color>
+
+    <!-- Status -->
+    <color name="error">#FFB4AB</color>
+    <color name="on_error">#690005</color>
 </resources>
