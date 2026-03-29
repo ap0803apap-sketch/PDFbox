@@ -3,69 +3,59 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/navigation_home">
+    app:startDestination="@id/nav_home">
 
+    <!-- HOME -->
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/nav_home"
         android:name="com.shejan.pdfbox_pdfeditor.ui.home.HomeFragment"
-        android:label="@string/title_home">
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+
         <action
             android:id="@+id/action_home_to_viewer"
-            app:destination="@id/navigation_viewer"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out" />
-        <action
-            android:id="@+id/action_home_to_tools"
-            app:destination="@id/navigation_tools"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out" />
+            app:destination="@id/navigation_viewer" />
     </fragment>
 
+    <!-- RECENT -->
     <fragment
-        android:id="@+id/navigation_tools"
-        android:name="com.shejan.pdfbox_pdfeditor.ui.tools.ToolsFragment"
-        android:label="@string/title_tools"
-        tools:layout="@layout/fragment_tools">
-        <action
-            android:id="@+id/action_tools_to_viewer"
-            app:destination="@id/navigation_viewer"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/navigation_recent"
+        android:id="@+id/nav_recent"
         android:name="com.shejan.pdfbox_pdfeditor.ui.recent.RecentFragment"
-        android:label="@string/title_recent"
+        android:label="Recent"
         tools:layout="@layout/fragment_recent">
+
         <action
             android:id="@+id/action_recent_to_viewer"
-            app:destination="@id/navigation_viewer"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out" />
+            app:destination="@id/navigation_viewer" />
     </fragment>
 
+    <!-- TOOLS -->
+    <fragment
+        android:id="@+id/nav_tools"
+        android:name="com.shejan.pdfbox_pdfeditor.ui.tools.ToolsFragment"
+        android:label="Tools"
+        tools:layout="@layout/fragment_tools" />
+
+    <!-- SETTINGS -->
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.shejan.pdfbox_pdfeditor.ui.settings.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings" />
+
+    <!-- VIEWER -->
     <fragment
         android:id="@+id/navigation_viewer"
         android:name="com.shejan.pdfbox_pdfeditor.ui.viewer.ViewerFragment"
-        android:label="@string/title_viewer"
+        android:label="Viewer"
         tools:layout="@layout/fragment_viewer">
+
         <argument
             android:name="uri"
             app:argType="string" />
-        <action
-            android:id="@+id/action_viewer_to_editor"
-            app:destination="@id/navigation_editor"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out" />
     </fragment>
 
-    <fragment
-        android:id="@+id/navigation_editor"
-        android:name="com.shejan.pdfbox_pdfeditor.ui.editor.EditorFragment"
-        android:label="@string/title_editor"
-        tools:layout="@layout/fragment_editor" />
-
+    <!-- PDF TOOLS -->
     <fragment
         android:id="@+id/navigation_merge"
         android:name="com.shejan.pdfbox_pdfeditor.ui.merge.MergeFragment"
@@ -93,7 +83,7 @@
     <fragment
         android:id="@+id/navigation_lock_unlock"
         android:name="com.shejan.pdfbox_pdfeditor.ui.security.LockUnlockFragment"
-        android:label="Lock/Unlock PDF"
+        android:label="Lock PDF"
         tools:layout="@layout/fragment_lock_unlock" />
 
     <fragment
@@ -108,13 +98,4 @@
         android:label="Text Extraction"
         tools:layout="@layout/fragment_text_extraction" />
 
-    <fragment
-        android:id="@+id/navigation_settings"
-        android:name="com.shejan.pdfbox_pdfeditor.ui.settings.SettingsFragment"
-        android:label="Settings"
-        tools:layout="@layout/fragment_settings" />
 </navigation>
-
-
-
-

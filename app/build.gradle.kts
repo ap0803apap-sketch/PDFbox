@@ -1,75 +1,68 @@
 plugins {
-    alias(libs.plugins.android.application)
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
-    namespace = "com.shejan.pdfbox_pdfeditor"
+    namespace = "com.ap.pdf.box"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.shejan.pdfbox_pdfeditor"
+        applicationId = "com.ap.pdf.box"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
         }
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
-    java {
-        toolchain {
-            languageVersion.set(JavaLanguageVersion.of(24))
-        }
+    kotlin {
+        jvmToolchain(17)
     }
-
-
-
-    
-    // Kotlin is built-in in AGP 9.1.0
-    // We can still use kotlinOptions for JVM target
-    // Kotlin jvmTarget is handled by AGP 9.1.0 built-in support
 
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 
 dependencies {
+
+    implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.navigation.fragment)
-    implementation(libs.androidx.navigation.ui)
-    
-    // PDF Engines
-    implementation(libs.pdfbox.android)
-    implementation(libs.android.pdf.viewer)
-    
-    // Utils
-    implementation(libs.glide)
+
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.livedata.ktx)
+
     implementation(libs.kotlinx.coroutines.android)
 
+    implementation(libs.glide)
+
+    // ✅ ROOM (KSP — FIXED)
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
-    annotationProcessor(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
 
-    implementation(libs.androidx.core.ktx)
+    // PDF
+    implementation(libs.pdfbox.android)
+    implementation(libs.android.pdf.viewer)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

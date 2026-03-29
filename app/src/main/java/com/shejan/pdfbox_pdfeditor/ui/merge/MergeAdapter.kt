@@ -3,7 +3,7 @@ package com.shejan.pdfbox_pdfeditor.ui.merge
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.shejan.pdfbox_pdfeditor.databinding.ItemMergeFileBinding
+import com.ap.pdf.box.databinding.ItemMergeFileBinding
 import java.util.*
 
 class MergeAdapter(

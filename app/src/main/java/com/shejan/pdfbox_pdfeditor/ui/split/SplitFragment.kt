@@ -14,8 +14,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.ap.pdf.box.databinding.FragmentSplitBinding
 import com.shejan.pdfbox_pdfeditor.core.PdfProcessor
-import com.shejan.pdfbox_pdfeditor.databinding.FragmentSplitBinding
+import com.shejan.pdfbox_pdfeditor.utils.FileUtils
 import com.tom_roush.pdfbox.pdmodel.PDDocument
 import kotlinx.coroutines.launch
 import java.io.File
@@ -119,6 +120,11 @@ class SplitFragment : Fragment() {
                     doc.save(outputStream)
                     doc.close()
                     outputStream.close()
+                    
+                    // Auto-save each part
+                    context?.let { ctx ->
+                        FileUtils.autoSaveFile(ctx, outputFile, "split_part${index + 1}_" + getFileName(uri), "Split")
+                    }
                 }
                 
                 Toast.makeText(context, "PDF Split Successfully! (${splitDocs.size} files)", Toast.LENGTH_LONG).show()
@@ -142,8 +148,6 @@ class SplitFragment : Fragment() {
                 if (part.contains("-")) {
                     val subParts = part.split("-").map { it.trim().toInt() }
                     if (subParts.size == 2) {
-                        // PDFBox is 0-indexed for pages in some methods, but users use 1-indexed.
-                        // I'll assume users use 1-indexed.
                         ranges.add(IntRange(subParts[0] - 1, subParts[1] - 1))
                     }
                 } else {
@@ -158,15 +162,7 @@ class SplitFragment : Fragment() {
     }
 
     private fun getFileName(uri: Uri): String {
-        var name = "Unknown.pdf"
-        val cursor: Cursor? = context?.contentResolver?.query(uri, null, null, null, null)
-        cursor?.use {
-            if (it.moveToFirst()) {
-                val nameIndex = it.getColumnIndex(OpenableColumns.DISPLAY_NAME)
-                if (nameIndex != -1) name = it.getString(nameIndex)
-            }
-        }
-        return name
+        return FileUtils.getFileName(requireContext(), uri)
     }
 
     override fun onDestroyView() {

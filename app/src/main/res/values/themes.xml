@@ -1,59 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <style name="Theme.PDFbox" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Main Palette -->
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorOnPrimary">@color/on_primary</item>
-        <item name="colorPrimaryContainer">@color/primary_container</item>
-        <item name="colorOnPrimaryContainer">@color/on_primary_container</item>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-        <item name="colorSecondary">@color/secondary</item>
-        <item name="colorOnSecondary">@color/on_secondary</item>
-        <item name="colorSecondaryContainer">@color/secondary_container</item>
-        <item name="colorOnSecondaryContainer">@color/on_secondary_container</item>
+    <style name="Theme.PDFBoxByAP" parent="Theme.Material3.Light.NoActionBar">
 
-        <item name="colorTertiary">@color/tertiary</item>
-        <item name="colorOnTertiary">@color/on_tertiary</item>
-        <item name="colorTertiaryContainer">@color/tertiary_container</item>
-        <item name="colorOnTertiaryContainer">@color/on_tertiary_container</item>
+        <item name="colorPrimary">@color/md_theme_light_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_light_on_primary</item>
 
-        <item name="android:colorBackground">@color/background</item>
-        <item name="colorSurface">@color/surface</item>
-        <item name="colorOnSurface">@color/on_surface</item>
-        <item name="colorSurfaceVariant">@color/surface_variant</item>
-        <item name="colorOnSurfaceVariant">@color/on_surface_variant</item>
-        <item name="colorOutline">@color/outline</item>
+        <item name="colorSecondary">@color/md_theme_light_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_light_on_secondary</item>
 
-        <item name="colorError">@color/error</item>
-        <item name="colorOnError">@color/on_error</item>
+        <item name="colorSurface">@color/md_theme_light_surface</item>
+        <item name="colorOnSurface">@color/md_theme_light_on_surface</item>
 
-        <!-- Status & Nav Bar -->
-        <item name="android:statusBarColor">@color/background</item>
+        <item name="colorSurfaceVariant">@color/md_theme_light_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_light_on_surface_variant</item>
+
+        <item name="android:colorBackground">@color/md_theme_light_background</item>
+        <item name="colorOnBackground">@color/md_theme_light_on_background</item>
+
+        <item name="colorError">@color/md_theme_light_error</item>
+        <item name="colorOnError">@color/md_theme_light_on_error</item>
+
+        <!-- Containers -->
+        <item name="colorSurfaceContainer">#FFFFFF</item>
+        <item name="colorSurfaceContainerLow">#F7F2FA</item>
+        <item name="colorSurfaceContainerHigh">#ECE6F0</item>
+
+        <!-- Status bar -->
+        <item name="android:statusBarColor">#F6F6F6</item>
         <item name="android:windowLightStatusBar">true</item>
-        <item name="android:navigationBarColor">@color/background</item>
-        <item name="android:windowLightNavigationBar">true</item>
 
-        <!-- Shape Appearance -->
-        <item name="shapeAppearanceSmallComponent">@style/ShapeSmall</item>
-        <item name="shapeAppearanceMediumComponent">@style/ShapeMedium</item>
-        <item name="shapeAppearanceLargeComponent">@style/ShapeLarge</item>
-
-        <!-- Typography -->
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="fontFamily">sans-serif</item>
+    </style>
+    <style name="Theme.PDFBoxByAP.Amoled" parent="Theme.PDFBoxByAP">
+        <item name="android:colorBackground">#000000</item>
+        <item name="colorSurface">#000000</item>
     </style>
 
-    <style name="ShapeSmall" parent="ShapeAppearance.Material3.SmallComponent">
-        <item name="cornerSize">12dp</item>
-    </style>
-    <style name="ShapeMedium" parent="ShapeAppearance.Material3.MediumComponent">
-        <item name="cornerSize">16dp</item>
-    </style>
-    <style name="ShapeLarge" parent="ShapeAppearance.Material3.LargeComponent">
-        <item name="cornerSize">28dp</item>
-    </style>
-
-    <style name="NavLabelTextAppearance" parent="TextAppearance.Material3.LabelMedium">
-        <item name="android:textSize">10sp</item>
-    </style>
 </resources>

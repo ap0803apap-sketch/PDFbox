@@ -1,54 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">PDF box by AP</string>
+    <string name="app_version">1.0</string>
+    <string name="developer_name">AP</string>
+    <string name="developer_email">ap0803apap@gmail.com</string>
+    <string name="developer_github_url">https://github.com/ap0803apap-sketch</string>
+
+    <!-- Home Screen -->
+    <string name="home_title">PDF Tools</string>
+    <string name="merge_pdfs">Merge PDFs</string>
+    <string name="split_pdf">Split PDF</string>
+    <string name="rotate_pdf">Rotate PDF</string>
+    <string name="compress_pdf">Compress PDF</string>
+    <string name="protect_pdf">Protect PDF</string>
+    <string name="unprotect_pdf">Unprotect PDF</string>
+    <string name="pdf_to_images">PDF to Images</string>
+    <string name="images_to_pdf">Images to PDF</string>
+
+    <string name="professional_tools">Professional Tools</string>
+    <string name="tools_description">Powerful tools to manage your PDF documents efficiently.</string>
+    <string name="tool_rotate">Rotate PDF</string>
+    <string name="tool_desc_rotate">Rotate pages of your PDF document</string>
+    <string name="text_extraction">Text Extraction</string>
+    <string name="encrypt_pdf">Encrypt PDF</string>
+
+    <!-- Section Headers -->
+    <string name="section_quick_tools">Quick Tools</string>
+    <string name="section_recent_files">Recent Files</string>
+
+    <!-- Actions -->
+    <string name="action_search">Search PDFs...</string>
+    <string name="action_open_pdf">Open PDF</string>
+    <string name="action_pdf_tools">PDF Tools</string>
+    <string name="action_see_all">See all</string>
+
+    <!-- Tool strings -->
+    <string name="tool_compress">Compress PDF</string>
+    <string name="tool_desc_compress">Reduce the size of your PDF files</string>
+    <string name="tool_merge">Merge PDFs</string>
+    <string name="tool_desc_merge">Combine multiple PDF files into one</string>
+    <string name="tool_split">Split PDF</string>
+    <string name="tool_desc_split">Split a PDF into separate pages</string>
+    <string name="tool_text_extraction">Text Extraction</string>
+    <string name="tool_desc_text_extraction">Extract text from PDF documents</string>
+    <string name="tool_pdf_to_image">PDF to Image</string>
+    <string name="tool_desc_pdf_to_image">Convert PDF pages to high quality images</string>
+    <string name="tool_lock_unlock">Lock/Unlock PDF</string>
+    <string name="tool_desc_lock_unlock">Add or remove password protection</string>
+
+    <!-- Empty States -->
+    <string name="empty_recent_title">No Recent Files</string>
+    <string name="empty_recent_desc">Your recently opened PDFs will appear here</string>
+
     <string name="title_home">Home</string>
     <string name="title_tools">Tools</string>
     <string name="title_recent">Recent</string>
     <string name="title_viewer">Viewer</string>
     <string name="title_editor">Editor</string>
 
-    <string name="action_search">Search</string>
-    <string name="action_settings">Settings</string>
-    <string name="action_open_pdf">Open PDF</string>
-    <string name="action_pdf_tools">PDF Tools</string>
-    <string name="action_see_all">See all</string>
-    
-    <string name="section_quick_tools">Quick Tools</string>
-    <string name="section_recent_files">Recent Files</string>
-    
-    <string name="tool_merge">Merge PDF</string>
-    <string name="tool_split">Split PDF</string>
-    <string name="tool_compress">Compress</string>
-    <string name="tool_rotate">Rotate Pages</string>
-    <string name="tool_lock">Password Lock</string>
-    <string name="tool_extract">Extract Images</string>
-    
-    <string name="tool_desc_merge">Combine multiple documents</string>
-    <string name="tool_desc_split">Extract specific pages</string>
-    <string name="tool_desc_compress">Reduce file size</string>
-    <string name="tool_desc_rotate">Change page orientation</string>
-    <string name="tool_desc_lock">Secure with a password</string>
-    <string name="tool_desc_extract">Save photos from PDF</string>
-    
-    <string name="empty_recent_title">No recent files</string>
-    <string name="empty_recent_desc">Open a PDF to get started</string>
-    
+    <string name="action_add">Add</string>
+
+    <!-- Recent Items -->
+    <string name="recent_files">Recent Files</string>
+    <string name="no_recent_files">No recent files</string>
+    <string name="clear_recent">Clear Recent</string>
+
+    <!-- Menu strings -->
     <string name="menu_open">Open</string>
     <string name="menu_share">Share</string>
-    <string name="menu_delete">Delete from recents</string>
+    <string name="menu_delete">Delete</string>
 
-    <!-- Legacy / Compatibility strings for other fragments -->
-    <string name="no_recent_files">No recent files found</string>
-    <string name="professional_tools">Professional Tools</string>
-    <string name="tools_description">Everything you need to manage your PDF documents efficiently.</string>
-    <string name="merge_pdfs">Merge PDFs</string>
-    <string name="split_pdf">Split PDF</string>
-    <string name="encrypt_pdf">Encrypt PDF</string>
-    <string name="compress_pdf">Compress</string>
-    <string name="pdf_to_image">PDF to Image</string>
-    <string name="text_extraction">Text Extraction</string>
-    <string name="tool_pdf_to_image">PDF to Image</string>
-    <string name="tool_desc_pdf_to_image">Convert pages to images</string>
-    <string name="tool_text_extraction">Text Extraction</string>
-    <string name="tool_desc_text_extraction">Extract selectable text</string>
-    <string name="action_add">action_add\n</string>
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="appearance_section">Appearance</string>
+    <string name="theme_settings">App Theme</string>
+    <string name="light_mode">Light</string>
+    <string name="dark_mode">Dark</string>
+    <string name="system_mode">System Default</string>
+    <string name="dynamic_colors">Dynamic Colors</string>
+    <string name="amoled_mode">AMOLED Dark Mode</string>
+    <string name="storage_section">Storage</string>
+    <string name="save_location">Save Location</string>
+    <string name="developer_section">Developer</string>
+    <string name="dev_name_label">Developer Name</string>
+    <string name="dev_email_label">Email</string>
+    <string name="dev_github_label">GitHub</string>
+    <string name="developer_info">Developer Info</string>
+    <string name="email">Email</string>
+    <string name="github">GitHub</string>
+    <string name="send_email">Send Email</string>
+    <string name="open_github">Open GitHub</string>
+
+    <!-- Tools -->
+    <string name="tools_title">Tools</string>
+    <string name="device_admin">Device Admin</string>
+    <string name="battery_optimization">Battery Optimization</string>
+    <string name="enable_protection">Enable Protection</string>
+    <string name="disable_battery_opt">Disable Battery Optimization</string>
+
+    <!-- General -->
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="share">Share</string>
+    <string name="processing">Processing...</string>
+    <string name="success">Success</string>
+    <string name="error">Error</string>
+    <string name="permission_denied">Permission denied</string>
+    <string name="file_saved_to">File saved to: %s</string>
+
 </resources>

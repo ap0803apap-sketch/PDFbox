@@ -17,8 +17,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.ap.pdf.box.databinding.FragmentTextExtractionBinding
 import com.shejan.pdfbox_pdfeditor.core.PdfProcessor
-import com.shejan.pdfbox_pdfeditor.databinding.FragmentTextExtractionBinding
 import kotlinx.coroutines.launch
 
 class TextExtractionFragment : Fragment() {

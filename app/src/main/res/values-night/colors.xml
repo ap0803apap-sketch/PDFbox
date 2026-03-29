@@ -1,49 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Material 3 Dark Colors (AMOLED Optimized) -->
-    <color name="primary">#A1C9FF</color>
-    <color name="on_primary">#003258</color>
-    <color name="primary_container">#00497E</color>
-    <color name="on_primary_container">#D1E4FF</color>
 
-    <color name="secondary">#BBC7DB</color>
-    <color name="on_secondary">#253140</color>
-    <color name="secondary_container">#3B4858</color>
-    <color name="on_secondary_container">#D7E3F7</color>
+    <color name="md_theme_dark_primary">#D0BCFF</color>
+    <color name="md_theme_dark_on_primary">#381E72</color>
+    <color name="md_theme_dark_primary_container">#4F378B</color>
+    <color name="md_theme_dark_on_primary_container">#EADDFF</color>
 
-    <color name="tertiary">#D6BEE4</color>
-    <color name="on_tertiary">#3B2948</color>
-    <color name="tertiary_container">#523F5F</color>
-    <color name="on_tertiary_container">#F2DAFF</color>
+    <color name="md_theme_dark_secondary">#CCC7DB</color>
+    <color name="md_theme_dark_on_secondary">#332D41</color>
+    <color name="md_theme_dark_secondary_container">#4A4458</color>
+    <color name="md_theme_dark_on_secondary_container">#E8DEF8</color>
 
-    <!-- Base (AMOLED Dark) -->
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
+    <color name="md_theme_dark_tertiary">#EFB8C8</color>
+    <color name="md_theme_dark_on_tertiary">#492532</color>
+    <color name="md_theme_dark_tertiary_container">#633B48</color>
+    <color name="md_theme_dark_on_tertiary_container">#FFD8E4</color>
 
-    <!-- Theme Dark (AMOLED) -->
-    <color name="background">#000000</color>
-    <color name="on_background">#E2E2E6</color>
-    <color name="surface">#000000</color>
-    <color name="on_surface">#E2E2E6</color>
-    <color name="surface_variant">#43474E</color>
-    <color name="on_surface_variant">#C3C7CF</color>
-    <color name="outline">#8D9199</color>
+    <color name="md_theme_dark_error">#F2B8B5</color>
+    <color name="md_theme_dark_on_error">#601410</color>
+    <color name="md_theme_dark_error_container">#8C1D18</color>
+    <color name="md_theme_dark_on_error_container">#F9DEDC</color>
 
-    <!-- Legacy/Custom mappings for existing code -->
-    <color name="primary_variant">#0061A4</color>
-    <color name="accent">#A1C9FF</color>
-    <color name="divider">#43474E</color>
-    <color name="card_stroke">#43474E</color>
-    <color name="icon_container_bg">#1A1C1E</color>
-    <color name="item_divider">#1A1C1E</color>
+    <color name="md_theme_dark_background">#1C1B1F</color>
+    <color name="md_theme_dark_on_background">#E6E1E5</color>
 
-    <!-- Text Colors -->
-    <color name="text_primary">#E2E2E6</color>
-    <color name="text_secondary">#C3C7CF</color>
-    <color name="text_tertiary">#8D9199</color>
-    <color name="text_hint">#73777F</color>
+    <color name="md_theme_dark_surface">#1C1B1F</color>
+    <color name="md_theme_dark_on_surface">#E6E1E5</color>
+    <color name="on_surface">#E6E1E5</color>
 
-    <!-- Status -->
-    <color name="error">#FFB4AB</color>
-    <color name="on_error">#690005</color>
+    <color name="md_theme_dark_surface_variant">#49454F</color>
+    <color name="md_theme_dark_on_surface_variant">#CAC4D0</color>
+
+    <color name="md_theme_dark_outline">#938F99</color>
+    <color name="md_theme_dark_outline_variant">#44474E</color>
+
+    <!-- Extra -->
+    <color name="success">#32D74B</color>
+
 </resources>

@@ -13,12 +13,11 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ap.pdf.box.databinding.FragmentMergeBinding
 import com.shejan.pdfbox_pdfeditor.core.PdfProcessor
-import com.shejan.pdfbox_pdfeditor.databinding.FragmentMergeBinding
 import com.shejan.pdfbox_pdfeditor.utils.FileUtils
 import kotlinx.coroutines.launch
 import java.io.File
@@ -153,10 +152,7 @@ class MergeFragment : Fragment() {
                 
                 val outputFile = File(outputFolder, "merged_${System.currentTimeMillis()}.pdf")
                 
-                // Use adapter.getFiles() to maintain the custom sort order
                 val currentFiles = adapter.getFiles()
-                
-                // Open all input streams and ensure they are closed
                 val inputStreams = currentFiles.mapNotNull { 
                     context?.contentResolver?.openInputStream(it.uri) 
                 }
@@ -170,9 +166,13 @@ class MergeFragment : Fragment() {
                     binding.tvMergedSize.text = formatFileSize(outputFile.length())
                     binding.resultContainer.visibility = View.VISIBLE
                     
+                    // Auto-save
+                    context?.let { ctx ->
+                        FileUtils.autoSaveFile(ctx, outputFile, "MergedDocuments.pdf", "Merged")
+                    }
+                    
                     Toast.makeText(context, "PDF Merged Successfully!", Toast.LENGTH_LONG).show()
                 } finally {
-                    // Close all input streams
                     inputStreams.forEach { try { it.close() } catch (e: Exception) {} }
                 }
                 
@@ -188,15 +188,7 @@ class MergeFragment : Fragment() {
 
 
     private fun getFileName(uri: Uri): String {
-        var name = "Unknown.pdf"
-        val cursor: Cursor? = context?.contentResolver?.query(uri, null, null, null, null)
-        cursor?.use {
-            if (it.moveToFirst()) {
-                val nameIndex = it.getColumnIndex(OpenableColumns.DISPLAY_NAME)
-                if (nameIndex != -1) name = it.getString(nameIndex)
-            }
-        }
-        return name
+        return FileUtils.getFileName(requireContext(), uri)
     }
 
     private fun getFileSize(uri: Uri): String {

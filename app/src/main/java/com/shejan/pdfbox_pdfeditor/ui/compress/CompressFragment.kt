@@ -13,9 +13,9 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
+import com.ap.pdf.box.databinding.FragmentCompressBinding
 import com.shejan.pdfbox_pdfeditor.core.PdfProcessor
-import com.shejan.pdfbox_pdfeditor.databinding.FragmentCompressBinding
+import com.shejan.pdfbox_pdfeditor.utils.FileUtils
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
@@ -115,6 +115,11 @@ class CompressFragment : Fragment() {
                 
                 compressedFile = outputFile
                 showResult(outputFile)
+
+                // Auto-save
+                context?.let { ctx ->
+                    FileUtils.autoSaveFile(ctx, outputFile, getFileName(uri), "Compressed")
+                }
                 
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -153,7 +158,7 @@ class CompressFragment : Fragment() {
                         input.copyTo(output)
                     }
                 }
-                Toast.makeText(context, "File saved successfully!", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "File saved successfully!", Toast.LENGTH_SHORT).show()
             } catch (e: Exception) {
                 Toast.makeText(context, "Failed to save file", Toast.LENGTH_SHORT).show()
             }
@@ -173,15 +178,7 @@ class CompressFragment : Fragment() {
     }
 
     private fun getFileName(uri: Uri): String {
-        var name = "Unknown.pdf"
-        val cursor: Cursor? = context?.contentResolver?.query(uri, null, null, null, null)
-        cursor?.use {
-            if (it.moveToFirst()) {
-                val nameIndex = it.getColumnIndex(OpenableColumns.DISPLAY_NAME)
-                if (nameIndex != -1) name = it.getString(nameIndex)
-            }
-        }
-        return name
+        return FileUtils.getFileName(requireContext(), uri)
     }
 
     private fun formatFileSize(size: Long): String {

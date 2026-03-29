@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.shejan.pdfbox_pdfeditor.databinding.ItemRecentFileBinding;
+import com.ap.pdf.box.databinding.ItemRecentFileBinding;
 import com.shejan.pdfbox_pdfeditor.model.RecentFile;
 
 public class RecentFilesAdapter extends ListAdapter<RecentFile, RecentFilesAdapter.RecentFileViewHolder> {

@@ -1,4 +1,4 @@
-package com.shejan.pdfbox_pdfeditor.ui.home;
+package com.shejan.pdfbox_pdfeditor.ui.adapters;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;

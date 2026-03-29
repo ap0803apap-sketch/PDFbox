@@ -1,6 +1,7 @@
 package com.shejan.pdfbox_pdfeditor.model;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "recent_files")
@@ -13,6 +14,15 @@ public class RecentFile {
     private String fileSize;
     private long lastOpened;
 
+    public RecentFile(int id, String fileName, String filePath, String fileSize, long lastOpened) {
+        this.id = id;
+        this.fileName = fileName;
+        this.filePath = filePath;
+        this.fileSize = fileSize;
+        this.lastOpened = lastOpened;
+    }
+
+    @Ignore
     public RecentFile(String fileName, String filePath, String fileSize, long lastOpened) {
         this.fileName = fileName;
         this.filePath = filePath;

@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.shejan.pdfbox_pdfeditor.databinding.FragmentEditorBinding
+import com.ap.pdf.box.databinding.FragmentEditorBinding
 
 class EditorFragment : Fragment() {
     private var _binding: FragmentEditorBinding? = null

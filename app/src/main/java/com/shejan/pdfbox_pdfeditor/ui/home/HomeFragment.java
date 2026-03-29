@@ -23,10 +23,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.shejan.pdfbox_pdfeditor.R;
-import com.shejan.pdfbox_pdfeditor.databinding.FragmentHomeBinding;
+import com.ap.pdf.box.R;
+import com.ap.pdf.box.databinding.FragmentHomeBinding;
 import com.shejan.pdfbox_pdfeditor.model.RecentFile;
 import com.shejan.pdfbox_pdfeditor.model.Tool;
+import com.shejan.pdfbox_pdfeditor.ui.adapters.RecentFilesAdapter;
+import com.shejan.pdfbox_pdfeditor.ui.adapters.ToolCardsAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -128,36 +130,36 @@ public class HomeFragment extends Fragment {
 
     private void setupClickListeners() {
         binding.btnOpenPdf.setOnClickListener(v -> openFilePicker());
-        
+
         binding.btnPdfTools.setOnClickListener(v -> {
-            BottomNavigationView bottomNav = getActivity().findViewById(R.id.bottom_nav);
+            BottomNavigationView bottomNav = getActivity().findViewById(R.id.bottom_navigation);
             if (bottomNav != null) {
-                bottomNav.setSelectedItemId(R.id.navigation_tools);
+                bottomNav.setSelectedItemId(R.id.nav_tools);
             }
         });
 
         binding.btnToolsSeeAll.setOnClickListener(v -> {
-            BottomNavigationView bottomNav = getActivity().findViewById(R.id.bottom_nav);
+            BottomNavigationView bottomNav = getActivity().findViewById(R.id.bottom_navigation);
             if (bottomNav != null) {
-                bottomNav.setSelectedItemId(R.id.navigation_tools);
+                bottomNav.setSelectedItemId(R.id.nav_tools);
             }
         });
 
         binding.btnRecentSeeAll.setOnClickListener(v -> {
-            BottomNavigationView bottomNav = getActivity().findViewById(R.id.bottom_nav);
+            BottomNavigationView bottomNav = getActivity().findViewById(R.id.bottom_navigation);
             if (bottomNav != null) {
-                bottomNav.setSelectedItemId(R.id.navigation_recent);
+                bottomNav.setSelectedItemId(R.id.nav_home);
             }
         });
 
         binding.tvRecentFilesHeader.setOnClickListener(v -> {
-            BottomNavigationView bottomNav = getActivity().findViewById(R.id.bottom_nav);
+            BottomNavigationView bottomNav = getActivity().findViewById(R.id.bottom_navigation);
             if (bottomNav != null) {
-                bottomNav.setSelectedItemId(R.id.navigation_recent);
+                bottomNav.setSelectedItemId(R.id.nav_home);
             }
         });
 
-        
+
         binding.btnSearch.setOnClickListener(v -> {
             boolean isVisible = binding.cardSearch.getVisibility() == View.VISIBLE;
             binding.cardSearch.setVisibility(isVisible ? View.GONE : View.VISIBLE);
@@ -234,7 +236,7 @@ public class HomeFragment extends Fragment {
         String sizeStr = formatFileSize(fileSize);
         RecentFile recentFile = new RecentFile(fileName, uri.toString(), sizeStr, System.currentTimeMillis());
         viewModel.insertRecentFile(recentFile);
-        
+
         navigateToViewer(uri);
     }
 
@@ -275,13 +277,13 @@ public class HomeFragment extends Fragment {
         Uri uri = Uri.parse(file.getFilePath());
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("application/pdf");
-        
+
         if (uri.getScheme().equals("file")) {
             java.io.File fileObj = new java.io.File(uri.getPath());
-            uri = androidx.core.content.FileProvider.getUriForFile(getContext(), 
+            uri = androidx.core.content.FileProvider.getUriForFile(getContext(),
                 getContext().getPackageName() + ".fileprovider", fileObj);
         }
-        
+
         intent.putExtra(Intent.EXTRA_STREAM, uri);
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         startActivity(Intent.createChooser(intent, "Share PDF"));

@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?android:attr/colorBackground">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -33,32 +32,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="16dp"
-            android:paddingTop="8dp">
+            android:paddingHorizontal="24dp"
+            android:paddingTop="12dp">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardSelectedFile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="20dp"
                 android:visibility="gone"
                 app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
-                app:cardCornerRadius="20dp"
+                app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
                 app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="88dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingHorizontal="16dp">
+                    android:paddingHorizontal="20dp">
 
                     <com.google.android.material.card.MaterialCardView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
                         app:cardBackgroundColor="?attr/colorErrorContainer"
-                        app:cardCornerRadius="12dp"
+                        app:cardCornerRadius="16dp"
                         app:cardElevation="0dp"
                         app:strokeWidth="0dp">
 
@@ -86,23 +85,24 @@
                             android:maxLines="1"
                             android:text="document.pdf"
                             android:textColor="?attr/colorOnSurface"
-                            android:textSize="15sp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/txtFileSize"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
                             android:fontFamily="sans-serif"
                             android:text="2.4 MB"
                             android:textColor="?attr/colorOnSurfaceVariant"
-                            android:textSize="13sp" />
+                            android:textSize="14sp" />
                     </LinearLayout>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnRemoveFile"
                         style="@style/Widget.Material3.Button.IconButton"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
                         app:icon="@drawable/ic_close"
                         app:iconTint="?attr/colorError" />
                 </LinearLayout>
@@ -112,27 +112,30 @@
                 android:id="@+id/btnSelectFile"
                 style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="64dp"
+                android:fontFamily="sans-serif-medium"
                 android:text="Select PDF File"
-                app:cornerRadius="16dp"
-                app:icon="@drawable/ic_add" />
+                android:textSize="16sp"
+                app:cornerRadius="20dp"
+                app:icon="@drawable/ic_add"
+                app:iconSize="24dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="12dp"
-                android:fontFamily="sans-serif-medium"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="sans-serif-bold"
                 android:text="Compression Options"
                 android:textColor="?attr/colorPrimary"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="?attr/colorSurfaceContainerLow"
-                app:cardCornerRadius="24dp"
+                app:cardCornerRadius="28dp"
                 app:cardElevation="0dp"
                 app:strokeWidth="0dp">
 
@@ -140,7 +143,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="20dp">
+                    android:padding="24dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -148,13 +151,13 @@
                         android:fontFamily="sans-serif-medium"
                         android:text="Select Level"
                         android:textColor="?attr/colorOnSurface"
-                        android:textSize="16sp" />
+                        android:textSize="18sp" />
 
                     <com.google.android.material.button.MaterialButtonToggleGroup
                         android:id="@+id/toggleCompression"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_height="56dp"
+                        android:layout_marginTop="20dp"
                         app:checkedButton="@+id/btnMedium"
                         app:singleSelection="true">
 
@@ -162,7 +165,7 @@
                             android:id="@+id/btnLow"
                             style="@style/Widget.Material3.Button.OutlinedButton"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:text="Low" />
 
@@ -170,7 +173,7 @@
                             android:id="@+id/btnMedium"
                             style="@style/Widget.Material3.Button.OutlinedButton"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:text="Medium" />
 
@@ -178,7 +181,7 @@
                             android:id="@+id/btnHigh"
                             style="@style/Widget.Material3.Button.OutlinedButton"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:text="High" />
                     </com.google.android.material.button.MaterialButtonToggleGroup>
@@ -188,18 +191,19 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCompress"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="32dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="40dp"
                 android:enabled="false"
+                android:fontFamily="sans-serif-bold"
                 android:text="Compress Now"
-                android:textSize="16sp"
-                app:cornerRadius="16dp" />
+                android:textSize="18sp"
+                app:cornerRadius="20dp" />
 
             <LinearLayout
                 android:id="@+id/resultContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="40dp"
                 android:orientation="vertical"
                 android:visibility="gone">
 
@@ -207,17 +211,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginBottom="12dp"
-                    android:fontFamily="sans-serif-medium"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="sans-serif-bold"
                     android:text="Compression Result"
                     android:textColor="?attr/colorPrimary"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
-                    app:cardCornerRadius="24dp"
+                    app:cardCornerRadius="28dp"
                     app:cardElevation="0dp"
                     app:strokeWidth="0dp">
 
@@ -225,7 +229,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="20dp">
+                        android:padding="24dp">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -236,7 +240,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Original Size"
                                 android:textColor="?attr/colorOnSurfaceVariant"
-                                android:textSize="15sp" />
+                                android:textSize="16sp" />
 
                             <TextView
                                 android:id="@+id/tvOriginalSize"
@@ -246,20 +250,20 @@
                                 android:fontFamily="sans-serif-medium"
                                 android:text="0 KB"
                                 android:textColor="?attr/colorOnSurface"
-                                android:textSize="15sp" />
+                                android:textSize="16sp" />
                         </RelativeLayout>
 
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp">
+                            android:layout_marginTop="16dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Compressed Size"
                                 android:textColor="?attr/colorOnSurfaceVariant"
-                                android:textSize="15sp" />
+                                android:textSize="16sp" />
 
                             <TextView
                                 android:id="@+id/tvCompressedSize"
@@ -269,23 +273,23 @@
                                 android:fontFamily="sans-serif-bold"
                                 android:text="0 KB"
                                 android:textColor="@color/success"
-                                android:textSize="16sp" />
+                                android:textSize="18sp" />
                         </RelativeLayout>
 
                         <com.google.android.material.divider.MaterialDivider
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginVertical="16dp" />
+                            android:layout_marginVertical="20dp" />
 
                         <TextView
                             android:id="@+id/tvSavings"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="sans-serif-bold"
                             android:gravity="center"
                             android:text="You saved 0 KB (0%)"
                             android:textColor="?attr/colorPrimary"
-                            android:textSize="15sp" />
+                            android:textSize="16sp" />
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -294,11 +298,14 @@
                     android:id="@+id/btnDownload"
                     style="@style/Widget.Material3.Button.TonalButton"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_height="64dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="sans-serif-medium"
                     android:text="Download PDF"
-                    app:cornerRadius="16dp"
-                    app:icon="@drawable/ic_download" />
+                    android:textSize="16sp"
+                    app:cornerRadius="20dp"
+                    app:icon="@drawable/ic_download"
+                    app:iconSize="24dp" />
 
             </LinearLayout>
 

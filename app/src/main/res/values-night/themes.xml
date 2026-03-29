@@ -1,49 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.PDFbox" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Main Palette (AMOLED Dark) -->
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorOnPrimary">@color/on_primary</item>
-        <item name="colorPrimaryContainer">@color/primary_container</item>
-        <item name="colorOnPrimaryContainer">@color/on_primary_container</item>
 
-        <item name="colorSecondary">@color/secondary</item>
-        <item name="colorOnSecondary">@color/on_secondary</item>
-        <item name="colorSecondaryContainer">@color/secondary_container</item>
-        <item name="colorOnSecondaryContainer">@color/on_secondary_container</item>
+    <style name="Theme.PDFBoxByAP" parent="Theme.Material3.Dark.NoActionBar">
 
-        <item name="colorTertiary">@color/tertiary</item>
-        <item name="colorOnTertiary">@color/on_tertiary</item>
-        <item name="colorTertiaryContainer">@color/tertiary_container</item>
-        <item name="colorOnTertiaryContainer">@color/on_tertiary_container</item>
+        <item name="colorPrimary">@color/md_theme_dark_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_dark_on_primary</item>
 
-        <item name="android:colorBackground">@color/background</item>
-        <item name="colorSurface">@color/surface</item>
-        <item name="colorOnSurface">@color/on_surface</item>
-        <item name="colorSurfaceVariant">@color/surface_variant</item>
-        <item name="colorOnSurfaceVariant">@color/on_surface_variant</item>
-        <item name="colorOutline">@color/outline</item>
+        <item name="colorSecondary">@color/md_theme_dark_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_dark_on_secondary</item>
 
-        <item name="colorError">@color/error</item>
-        <item name="colorOnError">@color/on_error</item>
+        <item name="colorSurface">@color/md_theme_dark_surface</item>
+        <item name="colorOnSurface">@color/md_theme_dark_on_surface</item>
 
-        <!-- Status & Nav Bar (AMOLED) -->
-        <item name="android:statusBarColor">@color/background</item>
+        <item name="colorSurfaceVariant">@color/md_theme_dark_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_dark_on_surface_variant</item>
+
+        <item name="colorOnBackground">@color/md_theme_dark_on_background</item>
+
+
+        <item name="colorError">@color/md_theme_dark_error</item>
+        <item name="colorOnError">@color/md_theme_dark_on_error</item>
+
+        <!-- Containers -->
+        <item name="colorSurfaceContainer">#211F26</item>
+        <item name="colorSurfaceContainerLow">#1D1B20</item>
+        <item name="colorSurfaceContainerHigh">#2B2930</item>
+
+        <item name="android:statusBarColor">#1C1B1F</item>
         <item name="android:windowLightStatusBar">false</item>
-        <item name="android:navigationBarColor">@color/background</item>
-        <item name="android:windowLightNavigationBar">false</item>
 
-        <!-- Shape Appearance -->
-        <item name="shapeAppearanceSmallComponent">@style/ShapeSmall</item>
-        <item name="shapeAppearanceMediumComponent">@style/ShapeMedium</item>
-        <item name="shapeAppearanceLargeComponent">@style/ShapeLarge</item>
-
-        <!-- Typography -->
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="fontFamily">sans-serif</item>
     </style>
+    <style name="Theme.PDFBoxByAP.Dark" parent="Theme.PDFBoxByAP"/>
 
-    <style name="NavLabelTextAppearance" parent="TextAppearance.Material3.LabelMedium">
-        <item name="android:textSize">10sp</item>
-    </style>
 </resources>
