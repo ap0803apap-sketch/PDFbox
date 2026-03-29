@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">PDF box by AP</string>
-    <string name="app_version">1.0</string>
+    <string name="app_version">1.0.0</string>
     <string name="developer_name">AP</string>
     <string name="developer_email">ap0803apap@gmail.com</string>
     <string name="developer_github_url">https://github.com/ap0803apap-sketch</string>
